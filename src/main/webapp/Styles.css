@@ -1,0 +1,330 @@
+body{
+   font-family: 'Arial';
+   background: url('Img/Designer.png') center/cover no-repeat;
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logoTexto{
+    margin: 15px 0px 15px 12px;
+    font-size: 30px;
+    background: linear-gradient(to bottom, white, pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.saludo{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+}
+
+img{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    background: radial-gradient(circle, rgba(255,217,217,1) 35%, rgba(255,164,164,1) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    border-bottom: 2px solid #ff7171;
+    margin-bottom: 6%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav a{
+    padding: 10px;
+}
+
+nav a:hover{
+    color: white;
+}
+
+#imagen-perfil{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%
+}
+
+.content{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.form-container{
+    background: radial-gradient(circle, rgba(255,217,217,1) 35%, rgba(255,241,241,1) 100%);
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 2px solid #ff7171;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+}
+
+h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.form-container--sexo,
+.form-container--ciudad,
+.form-container--edad,
+.form-container--usuario,
+.form-container--contrasena{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.edad-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.edad-container p{
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+select{
+    cursor: pointer;
+}
+
+select, 
+input{
+    border-color: #ff7171;
+    outline: #ff7171;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ff7171;
+    border-radius: 15px;
+    font-size: 15px
+}
+
+.btn{
+    background: #ff7171;
+    border-color: #ff7171;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #E66060;
+}
+
+.checkbox-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-container input{
+    width: 20%;
+}
+
+.checkbox-container input:hover{
+    cursor: pointer;
+}
+
+.boton-aficiones{
+    margin-top: 10px;
+}
+
+
+
+/* Resultados de la busqueda no logueado */
+.header-resultNoLogueado{
+    margin-bottom: 3%;
+}
+
+.content-resultNoLogueado{
+    height: 75vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 110px);
+    row-gap: 15px;
+    column-gap: 50px;
+}
+
+.content-resultNoLogueado--hijo{
+    height: 110px;
+    width: 100%;
+    border: 3px solid #ff7171;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background: radial-gradient(circle, rgba(255,217,217,1) 35%, rgba(255,241,241,1) 100%);
+    visibility: hidden;
+}
+
+.content-resultNoLogueado--hijo:hover{
+    cursor: pointer;
+    background: #ff7171;
+}
+
+.informacionPersona-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.informacionPersona-foto{
+    width: 120px;
+}
+
+.informacionPersona-foto img{
+    height: 100px;
+    width: 100px;
+    margin: 5px 10px;
+}
+
+.informacionPersona-datos{
+    width: 70%;
+    margin-left: 30px;
+}
+
+.datos-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.datos-container div{
+    font-size: 18px;
+}
+
+.cambioPagina-container{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-cambioBusqueda,
+.btn-siguientePagina{
+    background: radial-gradient(circle, rgba(255,217,217,1) 35%, rgba(255,241,241,1) 100%);
+    border: 2px solid #ff7171;
+    border-radius: 15px;
+    font-size: 18px;
+}
+
+.btn-cambioBusqueda:hover,
+.btn-siguientePagina:hover{
+    cursor: pointer;
+    background: #ff7171;
+}
+
+.btn-cambioBusqueda{
+    margin-right: 100px;
+}
+
+.btn-siguientePagina{
+    margin-left: 100px;
+}
+
+.container-gestionarAficiones {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    background: radial-gradient(circle, rgba(255,217,217,1) 35%, rgba(255,241,241,1) 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.h1-gestionarAficiones {
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+
+.button-container-gestionarAficiones {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.button-gestionarAficiones {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-gestionarAficiones:hover {
+    background-color: #0056b3;
+}
+
+.output-gestionarAficiones {
+    margin-top: 20px;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+}
+
+.misDatos-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.misDatos-container img{
+    margin-left: 30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%
+}
+
+.container {
+    background: radial-gradient(circle, rgba(255,217,217,1) 35%, rgba(255,241,241,1) 100%);
+    border: 1px solid #ff7171;
+    border-radius: 5px;
+    min-width: fit-content;
+    margin: 20px;
+    padding: 10px;
+}
+
+#dropArea,
+#ciudad {
+    width: 50%;
+}
+
+#imagen,
+#button {
+    cursor: pointer;
+}
+
+#mapa {
+    height: 400px;
+    width: 100%;
+}
