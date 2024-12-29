@@ -7,14 +7,15 @@ package packControl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -81,38 +82,35 @@ public class indexServlet extends HttpServlet {
         System.out.println("El correo introducido es: " + correo);
         System.out.println("La contraseña introducida es: " + contrasena);
 
-        // Obtener la conexión a la base de datos
         Connection connection = DatabaseConnection.getConnection();
 
-        // Realizar la consulta
         if (connection != null) {
             try {
-                String query = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
-                PreparedStatement stmt = connection.prepareStatement(query);
-                stmt.setString(1, correo);
-                stmt.setString(2, contrasena);
+                String sql = "SELECT * FROM usuario WHERE email = '" + correo + "' AND contraseña = '" + contrasena + "'";
 
-                ResultSet rs = stmt.executeQuery();
+                Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                System.out.println(rs);
 
-                // Si la consulta devuelve resultados, significa que el usuario existe
                 if (rs.next()) {
-                    System.out.println("<h1>Bienvenido, " + correo + "!</h1>");
-                } else {
-                    System.out.println("<h1>Correo o contraseña incorrectos.</h1>");
-                }
+                    System.out.println("El usuario existe");
 
-                rs.close();
-                stmt.close();
+                    HttpSession session = request.getSession();
+                    session.setAttribute("correo", rs.getString("email"));
+
+                    response.sendRedirect("BusquedaLogueado.jsp");
+                } else {
+                    System.out.println("Usuario o contraseña INCORRECTO");
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("<h1>Error al realizar la consulta a la base de datos.</h1>");
+                System.out.println("Error al realizar la consulta a la base de datos.");
             } finally {
-                // Cerrar la conexión
 
                 DatabaseConnection.closeConnection();
             }
         } else {
-            System.out.println("<h1>No se pudo conectar a la base de datos.</h1>");
+            System.out.println("No se pudo conectar a la base de datos.");
         }
 
         processRequest(request, response);
