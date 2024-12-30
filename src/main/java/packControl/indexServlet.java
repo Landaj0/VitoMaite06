@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -97,8 +99,7 @@ public class indexServlet extends HttpServlet {
 
                     HttpSession session = request.getSession();
                     session.setAttribute("correo", rs.getString("email"));
-
-                    response.sendRedirect("BusquedaLogueado.jsp");
+                    
                 } else {
                     System.out.println("Usuario o contraseña INCORRECTO");
                 }
@@ -106,8 +107,7 @@ public class indexServlet extends HttpServlet {
                 e.printStackTrace();
                 System.out.println("Error al realizar la consulta a la base de datos.");
             } finally {
-
-                DatabaseConnection.closeConnection();
+                response.sendRedirect("BusquedaLogueadoServlet");
             }
         } else {
             System.out.println("No se pudo conectar a la base de datos.");

@@ -19,8 +19,8 @@
                 <link rel="stylesheet" type="text/css" href="Styles.css" >
                 <p class="logoTexto">VitoMaite</p>
             </a>
-            <span id="saludoUsuario" class="saludo"></span>
-            <img id="imagen-perfil" src="" alt="foto de perfil">
+            <span id="saludoUsuario" class="saludo"><%= request.getAttribute("saludo") %></span>
+            <img id="imagen-perfil" src="Img/<%= request.getAttribute("fotoPerfil") %>" alt="foto de perfil">
             <nav>
                 <a href="miPerfil.html">Ver mi perfil</a>
                 <a href="BusquedaPorAficiones.html">Busqueda por Aficiones</a>
