@@ -84,13 +84,8 @@ public class BusquedaLogueadoServlet extends HttpServlet {
         String edadMin = request.getParameter("edadMin");
         String edadMax = request.getParameter("edadMax");
         String ciudad = request.getParameter("ciudad");
-
-        System.out.println(sexo);
-        System.out.println(edadMin);
-        System.out.println(edadMax);
-        System.out.println(ciudad);
             
-        if(sexo != null || edadMin != null || edadMax != null || ciudad != null){
+        if(sexo != null && edadMin != null && edadMax != null && ciudad != null){
             
             Connection connection = DatabaseConnection.getConnection();
         
