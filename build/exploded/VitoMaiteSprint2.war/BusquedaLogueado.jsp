@@ -26,7 +26,7 @@
                 <a href="BusquedaPorAficiones.html">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.html">Ver mis Likes</a>
                 <a href="BusquedaPorLocalizacion.html">Por Localización</a>
-                <a href="index.html">Log out</a>
+                <a href="LogOutServlet">Log out</a>
             </nav>
         </header>
 

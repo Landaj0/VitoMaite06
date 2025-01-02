@@ -26,7 +26,7 @@
                 <a href="miPerfil.html">Ver mi perfil</a>
                 <a href="BusquedaPorAficiones.html">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.html">Ver mis Likes</a>
-                <a href="index.html">Log out</a>
+                <a href="LogOutServlet">Log out</a>
             </nav>
         </header>
         <div class="content-resultNoLogueado">
