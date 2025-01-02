@@ -85,9 +85,9 @@ public class BusquedaLogueadoServlet extends HttpServlet {
                 System.out.println(rs);
 
                 rs.next();
-                request.setAttribute("saludo", "Hola " + rs.getString("nombre"));  
-                request.setAttribute("fotoPerfil", rs.getString("foto"));  
-                
+                request.setAttribute("saludo", "Hola " + rs.getString("nombre"));
+                request.setAttribute("fotoPerfil", rs.getString("foto"));
+
                 request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response);
             } catch (SQLException e) {
                 System.out.println("Error al realizar la consulta a la base de datos.");
@@ -108,6 +108,29 @@ public class BusquedaLogueadoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String sexo = request.getParameter("sexo");  //Integer.parseInt(request.getParameter("edadMin"));
+        String edadMin = request.getParameter("edadMin");
+        String edadMax = request.getParameter("edadMax");
+        String ciudad = request.getParameter("ciudad");
+
+        System.out.println(sexo);
+        System.out.println(edadMin);
+        System.out.println(edadMax);
+        System.out.println(ciudad);
+            
+        if(sexo != null || edadMin != null || edadMax != null || ciudad != null){
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("sexo", sexo);
+            session.setAttribute("edadMin", edadMin);
+            session.setAttribute("edadMax", edadMax);
+            session.setAttribute("ciudad", ciudad);
+            
+            response.sendRedirect("ResultadoBusquedaLogueadoServlet");
+            
+        }
+        
         processRequest(request, response);
     }
 
