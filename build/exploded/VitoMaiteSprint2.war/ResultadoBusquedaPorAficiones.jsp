@@ -23,10 +23,10 @@
             <span id="saludoUsuario" class="saludo"></span>
             <img id="imagen-perfil" src="" alt="foto de perfil">
             <nav>
-                <a href="miPerfil.html">Ver mi perfil</a>
-                <a href="BusquedaLogueado.html">Busqueda General</a>
+                <a href="MiPerfilServlet">Ver mi perfil</a>
+                <a href="BusquedaLogueado.jsp">Busqueda General</a>
                 <a href="VerMisLikes.html">Ver mis Likes</a>
-                <a href="index.html">Log out</a>
+                <a href="LogOutServlet">Log out</a>
             </nav>
         </header>
         

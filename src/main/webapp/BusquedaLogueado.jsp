@@ -22,7 +22,7 @@
             <span id="saludoUsuario" class="saludo"><%= request.getAttribute("saludo") %></span>
             <img id="imagen-perfil" src="Img/<%= request.getAttribute("fotoPerfil") %>" alt="foto de perfil">
             <nav>
-                <a href="miPerfil.html">Ver mi perfil</a>
+                <a href="miPerfil.jsp">Ver mi perfil</a>
                 <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.html">Ver mis Likes</a>
                 <a href="BusquedaPorLocalizacion.html">Por Localización</a>
