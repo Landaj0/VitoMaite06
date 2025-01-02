@@ -21,8 +21,8 @@
                 <p class="logoTexto">VitoMaite</p>
             </a>
             <nav>
-                <a href="BusquedaNoLogueado.html">Buscar Pareja</a>
-                <a href="index.html">Log in</a>
+                <a href="BusquedaNoLogueado.jsp">Buscar Pareja</a>
+                <a href="index.jsp">Log in</a>
             </nav>
         </header>
         <div class="content-resultNoLogueado">
