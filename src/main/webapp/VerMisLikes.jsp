@@ -1,4 +1,3 @@
-<%@page import="packControl.VerMisLikesServlet"%>
 <%@page import="java.util.logging.Logger"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="java.sql.SQLException"%>
@@ -26,6 +25,7 @@
                 <a href="BusquedaLogueado.jsp">Busqueda General</a>
                 <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.jsp">Ver mis Likes</a>
+                <a href="Recomendaciones.jsp">Compatibles</a>
                 <a href="index.jsp">Log out</a>
             </nav>
         </header>
@@ -82,7 +82,6 @@
                 }
 
             } catch (SQLException ex) {
-                Logger.getLogger(VerMisLikesServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

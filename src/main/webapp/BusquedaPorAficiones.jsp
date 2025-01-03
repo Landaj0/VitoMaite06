@@ -26,6 +26,7 @@
                 <a href="MiPerfilServlet">Ver mi perfil</a>
                 <a href="BusquedaLogueado.jsp">Busqueda General</a>
                 <a href="VerMisLikes.jsp">Ver mis Likes</a>
+                <a href="Recomendaciones.jsp">Compatibles</a>
                 <a href="LogOutServlet">Log out</a>
             </nav>
         </header>

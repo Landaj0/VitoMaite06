@@ -99,6 +99,9 @@ public class indexServlet extends HttpServlet {
 
                     HttpSession session = request.getSession();
                     session.setAttribute("correo", correo);
+                    session.setAttribute("miCiudad", rs.getString("ciudad"));
+                    session.setAttribute("miEdad", rs.getInt("edad"));
+                    session.setAttribute("miGenero", rs.getString("genero"));
                     session.setAttribute("saludo", "Hola " + rs.getString("nombre"));
                     session.setAttribute("fotoPerfil", rs.getString("foto"));
                     

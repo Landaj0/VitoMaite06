@@ -1,4 +1,3 @@
-<%@page import="packControl.VerMisLikesServlet"%>
 <%@page import="java.util.logging.Logger"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="java.sql.SQLException"%>
@@ -82,7 +81,6 @@
                 }
 
             } catch (SQLException ex) {
-                Logger.getLogger(VerMisLikesServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
