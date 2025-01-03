@@ -84,17 +84,18 @@ public class BusquedaLogueadoServlet extends HttpServlet {
         String edadMin = request.getParameter("edadMin");
         String edadMax = request.getParameter("edadMax");
         String ciudad = request.getParameter("ciudad");
+        HttpSession session = request.getSession(false);
             
-        if(sexo != null && edadMin != null && edadMax != null && ciudad != null){
+        if(sexo != null && edadMin != null && edadMax != null && ciudad != null && Integer.parseInt(edadMin) < Integer.parseInt(edadMax)){
             
             Connection connection = DatabaseConnection.getConnection();
         
             if (connection != null){
                 
-                String sql = "select * from usuario where genero = '" + sexo + "' and edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "'";
+                String sql = "select * from usuario where genero = '" + sexo + "' and edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "' and email != '" + session.getAttribute("correo") + "'";
             
                 if(sexo.equals("Ambos")){
-                    sql = "select * from usuario where edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "'";
+                    sql = "select * from usuario where edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "' and email != '" + session.getAttribute("correo") + "'";
                 }
                 
                 try {
@@ -137,7 +138,8 @@ public class BusquedaLogueadoServlet extends HttpServlet {
             request.getRequestDispatcher("ResultadoBusquedaLogueado.jsp").forward(request, response);
         }
         
-        processRequest(request, response);
+        System.out.println("Error");
+        request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response);
     }
 
     /**

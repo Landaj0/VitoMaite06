@@ -17,7 +17,7 @@ public class DatabaseConnection {
     // Definimos los parámetros de conexión
     private static final String URL = "jdbc:mysql://localhost:3306/vitomaite06";
     private static final String USER = "root";
-    private static final String PASSWORD = "SlgnstNslq3lf";
+    private static final String PASSWORD = "Kuku2003";
 
     private static Connection connection = null;
 

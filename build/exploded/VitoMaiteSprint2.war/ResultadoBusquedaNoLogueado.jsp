@@ -17,7 +17,7 @@
     <body>
         <header class="header-resultNoLogueado">
             <a href="#" class="logo">
-                <img src="../img/logoCorazon.png" width="50" height="50" alt="Logo VitoMaite">
+                <img src="Img/logoCorazon.png" width="50" height="50" alt="Logo VitoMaite">
                 <p class="logoTexto">VitoMaite</p>
             </a>
             <nav>

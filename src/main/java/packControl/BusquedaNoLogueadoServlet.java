@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -80,16 +81,17 @@ public class BusquedaNoLogueadoServlet extends HttpServlet {
         String edadMin = request.getParameter("edadMin");
         String edadMax = request.getParameter("edadMax");
         String ciudad = request.getParameter("ciudad");
+        HttpSession session = request.getSession(false);
         
         System.out.println(edadMin);
             
-        if(sexo != null && edadMin != null && edadMax != null && ciudad != null){
+        if(sexo != null && edadMin != null && edadMax != null && ciudad != null && Integer.parseInt(edadMin) < Integer.parseInt(edadMax)){
             
             Connection connection = DatabaseConnection.getConnection();
         
             if (connection != null){
                 
-                String sql = "select * from usuario where genero = '" + sexo + "' and edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "'";
+                String sql = "select * from usuario where genero = '" + sexo + "' and edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "' and email != '" + session.getAttribute("correo") + "'";
             
                 System.out.println(sexo);
                 System.out.println(edadMin);
@@ -98,7 +100,7 @@ public class BusquedaNoLogueadoServlet extends HttpServlet {
                 
                 
                 if(sexo.equals("Ambos")){
-                    sql = "select * from usuario where edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "'";
+                    sql = "select * from usuario where edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "' and email != '" + session.getAttribute("correo") + "'";
                 }
                 
                 try {
@@ -141,7 +143,8 @@ public class BusquedaNoLogueadoServlet extends HttpServlet {
             request.getRequestDispatcher("ResultadoBusquedaNoLogueado.jsp").forward(request, response);
         }
         
-        processRequest(request, response);
+        System.out.println("Error");
+        request.getRequestDispatcher("BusquedaNoLogueado.jsp").forward(request, response);
     }
 
     /**

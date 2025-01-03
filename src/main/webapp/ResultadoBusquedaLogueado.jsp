@@ -17,15 +17,13 @@
     
         <header class="header-resultNoLogueado">
             <a href="#" class="logo">
-                <img src="../img/logoCorazon.png" width="50" height="50" alt="Logo VitoMaite">
+                <img src="Img/logoCorazon.png" width="50" height="50" alt="Logo VitoMaite">
                 <p class="logoTexto">VitoMaite</p>
             </a>
-            <span id="saludoUsuario" class="saludo"></span>
-            <img id="imagen-perfil" src="" alt="foto de perfil">
             <nav>
-                <a href="miPerfil.html">Ver mi perfil</a>
-                <a href="BusquedaPorAficiones.html">Busqueda por Aficiones</a>
-                <a href="VerMisLikes.html">Ver mis Likes</a>
+                <a href="miPerfil.jsp">Ver mi perfil</a>
+                <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
+                <a href="VerMisLikes.jsp">Ver mis Likes</a>
                 <a href="LogOutServlet">Log out</a>
             </nav>
         </header>

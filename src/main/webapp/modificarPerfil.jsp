@@ -16,15 +16,15 @@
     <body>
         <header>
             <a href="#" class="logo">
-                <img src="../img/logoCorazon.png" width="50" height="50" alt="Logo VitoMaite">
+                <img src="Img/logoCorazon.png" width="50" height="50" alt="Logo VitoMaite">
                 <p class="logoTexto">VitoMaite</p>
             </a>
-            <span id="saludoUsuario" class="saludo"></span>
             <nav>
                 <a href="miPerfil.html">Mi Perfil</a>
-                <a href="BusquedaLogueado.html">Busqueda General</a>
-                <a href="VerMisLikes.html">Ver mis Likes</a>
-                <a href="index.html">Log out</a>
+                <a href="BusquedaLogueado.jsp">Busqueda General</a>
+                <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
+                <a href="VerMisLikes.jsp">Ver mis Likes</a>
+                <a href="index.jsp">Log out</a>
             </nav>
         </header>
         <div class="container">

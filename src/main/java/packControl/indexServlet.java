@@ -99,8 +99,8 @@ public class indexServlet extends HttpServlet {
 
                     HttpSession session = request.getSession();
                     session.setAttribute("correo", correo);
-                    request.setAttribute("saludo", "Hola " + rs.getString("nombre"));
-                    request.setAttribute("fotoPerfil", rs.getString("foto"));
+                    session.setAttribute("saludo", "Hola " + rs.getString("nombre"));
+                    session.setAttribute("fotoPerfil", rs.getString("foto"));
                     
                     request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response); 
                     

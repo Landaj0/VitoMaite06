@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -78,6 +79,8 @@ public class BusquedaPorAficiones extends HttpServlet {
             throws ServletException, IOException {
         
         String[] aficiones = request.getParameterValues("aficiones");
+        HttpSession session = request.getSession(false);
+        
         for (String aficion : aficiones) {
             System.out.println(aficion);
         }
@@ -115,7 +118,7 @@ public class BusquedaPorAficiones extends HttpServlet {
                 ArrayList<String> fotosUsuarios = new ArrayList<>();
                 
                 for(int id : idAficiones){
-                    String sql2 = "select distinct(emailUsuario) from usuario_aficion where idAficion = " + id;
+                    String sql2 = "select distinct(emailUsuario) from usuario_aficion where idAficion = " + id +" and emailUsuario != '" + session.getAttribute("correo") + "'";
                     
                     try {
                     
