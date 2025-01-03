@@ -21,7 +21,7 @@
             </a>
             <span id="saludoUsuario" class="saludo"></span>
             <nav>
-                <a href="modificarPerfil.html">Modificar Perfil</a>
+                <a href="modificarPerfil.jsp">Modificar Perfil</a>
                 <a href="gestionarAficiones.html">Gestionar Aficiones</a>
                 <a href="BusquedaLogueado.jsp">Busqueda General</a>
                 <a href="VerMisLikes.html">Ver mis Likes</a>
