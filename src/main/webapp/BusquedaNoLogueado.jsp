@@ -28,32 +28,29 @@
         <div class="content">
             <div class="form-container">
                 <h1>Buscar Personas</h1>
-                <form>
+                <form action="BusquedaNoLogueadoServlet" method="POST">
                     <div class="form-container--sexo">
                         <h4>Eliga el sexo</h4>
-                        <select id="sexo">
+                        <select id="sexo" name="sexo">
                             <option value="" disabled selected>Seleccine una opción</option>
-                            <option value="Mujer">Soy hombre y busco mujer</option>
-                            <option value="Hombre">Soy hombre y busco hombre</option>
-                            <option value="Hombre">Soy mujer y busco hombre</option>
-                            <option value="Mujer">Soy mujer y busco mujer</option>
-                            <option value="Ambos">Soy hombre y busco ambos</option>
-                            <option value="Ambos">Soy mujer y busco ambos</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Ambos">Ambos</option>
                         </select>
                     </div>
 
                     <div class="form-container--edad">
                         <h4>Eliga la edad</h4>
                         <div class="edad-container">
-                            <input id="edad-min" type="number" min="18" placeholder="Mínima">
+                            <input name="edadMin" id="edad-min" type="number" min="18" placeholder="Mínima">
                             <p>-</p>
-                            <input id="edad-max" type="number" min="18" placeholder="Máxima">
+                            <input name="edadMax" id="edad-max" type="number" min="18" placeholder="Máxima">
                         </div>
                     </div>
 
                     <div class="form-container--ciudad">
                         <h4>Eliga la ciudad</h4>
-                        <select id="ciudad">
+                        <select id="ciudad" name="ciudad">
                             <option value="" disabled selected>Seleccine una opción</option>
                             <option value="Bilbao">Bilbao</option>
                             <option value="Vitoria-Gasteiz">Vitoria</option>
@@ -61,7 +58,7 @@
                         </select>
                     </div>
 
-                    <button type="button" class="btn" id="boton-busquedaNoLogueado">Buscar</button>
+                    <button type="submit" class="btn" id="boton-busquedaNoLogueado">Buscar</button>
                 </form>
             </div>
         </div>

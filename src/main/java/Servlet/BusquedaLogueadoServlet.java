@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Servlet;
+package packControl;
 
-import BD.DatabaseConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author USUARIO
  */
-@WebServlet(name = "BusquedaLogueadoServlet", urlPatterns = {"/BusquedaLogueadoServletXXX"})
+@WebServlet(name = "BusquedaLogueadoServlet", urlPatterns = {"/BusquedaLogueadoServlet"})
 public class BusquedaLogueadoServlet extends HttpServlet {
 
     /**
@@ -66,36 +66,6 @@ public class BusquedaLogueadoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Connection connection = DatabaseConnection.getConnection();
-
-        if (connection != null) {
-
-            try {
-                HttpSession session = request.getSession(false);
-
-                String correo = (String) session.getAttribute("correo");
-                String sql = "SELECT * FROM usuario WHERE email = '" + correo + "'";
-
-                System.out.println(correo);
-                System.out.println(sql);
-                System.out.println(connection);
-
-                Statement stmt = connection.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-
-                System.out.println(rs);
-
-                rs.next();
-                request.setAttribute("saludo", "Hola " + rs.getString("nombre"));
-                request.setAttribute("fotoPerfil", rs.getString("foto"));
-
-                request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response);
-            } catch (SQLException e) {
-                System.out.println("Error al realizar la consulta a la base de datos.");
-            }
-        } else {
-            System.out.println("No se pudo conectar a la base de datos.");
-        }
     }
 
     /**
@@ -114,25 +84,62 @@ public class BusquedaLogueadoServlet extends HttpServlet {
         String edadMin = request.getParameter("edadMin");
         String edadMax = request.getParameter("edadMax");
         String ciudad = request.getParameter("ciudad");
-
-        System.out.println(sexo);
-        System.out.println(edadMin);
-        System.out.println(edadMax);
-        System.out.println(ciudad);
+        HttpSession session = request.getSession(false);
             
-        if(sexo != null || edadMin != null || edadMax != null || ciudad != null){
+        if(sexo != null && edadMin != null && edadMax != null && ciudad != null && Integer.parseInt(edadMin) < Integer.parseInt(edadMax)){
             
-            HttpSession session = request.getSession();
-            session.setAttribute("sexo", sexo);
-            session.setAttribute("edadMin", edadMin);
-            session.setAttribute("edadMax", edadMax);
-            session.setAttribute("ciudad", ciudad);
+            Connection connection = DatabaseConnection.getConnection();
+        
+            if (connection != null){
+                
+                String sql = "select * from usuario where genero = '" + sexo + "' and edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "' and email != '" + session.getAttribute("correo") + "'";
             
-            response.sendRedirect("ResultadoBusquedaLogueadoServlet");
+                if(sexo.equals("Ambos")){
+                    sql = "select * from usuario where edad >= " + edadMin + " and edad <= " + edadMax + " and ciudad = '" + ciudad + "' and email != '" + session.getAttribute("correo") + "'";
+                }
+                
+                try {
+                    
+                    Statement stmt = connection.createStatement();
+                    ResultSet rs = stmt.executeQuery(sql);
+                    
+                    ArrayList<String> correoResultado = new ArrayList<>();
+                    ArrayList<String> nombreResultado = new ArrayList<>();
+                    ArrayList<String> sexoResultado = new ArrayList<>();
+                    ArrayList<Integer> edadResultado = new ArrayList<>();
+                    ArrayList<String> ciudadResultado = new ArrayList<>();
+                    ArrayList<String> fotoResultado = new ArrayList<>();
+                    
+                    while(rs.next()){
+                        
+                        correoResultado.add(rs.getString("email"));
+                        nombreResultado.add(rs.getString("nombre"));
+                        sexoResultado.add(rs.getString("genero"));
+                        edadResultado.add(rs.getInt("edad"));
+                        ciudadResultado.add(rs.getString("ciudad"));
+                        fotoResultado.add(rs.getString("foto"));   
+                    }
+                    request.setAttribute("correos", correoResultado);
+                    request.setAttribute("nombres", nombreResultado);
+                    request.setAttribute("sexos", sexoResultado);
+                    request.setAttribute("edades", edadResultado);
+                    request.setAttribute("ciudades", ciudadResultado);
+                    request.setAttribute("fotos", fotoResultado);
+                    
+                    
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            else {
+                System.out.println("No se pudo conectar a la base de datos.");
+            }   
             
+            request.getRequestDispatcher("ResultadoBusquedaLogueado.jsp").forward(request, response);
         }
         
-        processRequest(request, response);
+        System.out.println("Error");
+        request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response);
     }
 
     /**
