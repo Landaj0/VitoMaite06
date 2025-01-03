@@ -98,16 +98,23 @@ public class indexServlet extends HttpServlet {
                     System.out.println("El usuario existe");
 
                     HttpSession session = request.getSession();
-                    session.setAttribute("correo", rs.getString("email"));
+                    session.setAttribute("correo", correo);
+                    session.setAttribute("miCiudad", rs.getString("ciudad"));
+                    session.setAttribute("miEdad", rs.getInt("edad"));
+                    session.setAttribute("miGenero", rs.getString("genero"));
+                    session.setAttribute("saludo", "Hola " + rs.getString("nombre"));
+                    session.setAttribute("fotoPerfil", rs.getString("foto"));
+                    
+                    request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response); 
                     
                 } else {
                     System.out.println("Usuario o contraseña INCORRECTO");
+                    
+                    response.sendRedirect("index.jsp");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.out.println("Error al realizar la consulta a la base de datos.");
-            } finally {
-                response.sendRedirect("BusquedaLogueadoServlet");
             }
         } else {
             System.out.println("No se pudo conectar a la base de datos.");
