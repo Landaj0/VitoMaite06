@@ -120,8 +120,6 @@ public class indexServlet extends HttpServlet {
         } else {
             System.out.println("No se pudo conectar a la base de datos.");
         }
-
-        processRequest(request, response);
     }
 
     /**

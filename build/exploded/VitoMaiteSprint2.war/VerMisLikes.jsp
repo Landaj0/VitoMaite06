@@ -1,7 +1,8 @@
+<%@page import="utils.DatabaseConnection"%>
 <%@page import="java.util.logging.Logger"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="Servlet.DatabaseConnection"%>
+<%@page import="utils.DatabaseConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>

@@ -37,8 +37,8 @@
                 private Connection con;
                 private Statement st;
                 private ResultSet rs;
-                private String nombre, categoria, fecha, nombreV,emailV, foto;
-                private int precio, tlfV;
+                private String nombre, ciudad, genero, foto;
+                private int edad;
                 private double latitud,longitud;
 
                 public void jspInit(){
@@ -47,5 +47,17 @@
 
                 %>
         </header>
+        <%
+                if (request.getParameter("error") != null) {
+        %>
+
+        <h2> <%= request.getParameter("error")%> </h2>
+        <%
+            }
+        %>
+        <main>
+            
+        </main>
+         <a href="ResultadoBusquedaLogueado.jsp">Volver </a><p>
     </body>
 </html>

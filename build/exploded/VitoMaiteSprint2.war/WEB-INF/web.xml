@@ -14,15 +14,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>indexServlet</servlet-name>
-        <url-pattern>/indexServletXXX</url-pattern>
+        <url-pattern>/indexServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResultadoBusquedaLogueado</servlet-name>
-        <url-pattern>/ResultadoBusquedaLogueadoServletXXX</url-pattern>
+        <url-pattern>/ResultadoBusquedaLogueadoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BusquedaLogueado</servlet-name>
-        <url-pattern>/BusquedaLogueadoServletXXX</url-pattern>
+        <url-pattern>/BusquedaLogueadoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
