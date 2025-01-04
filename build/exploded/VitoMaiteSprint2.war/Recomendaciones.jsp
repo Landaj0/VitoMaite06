@@ -1,7 +1,7 @@
 <%@page import="java.util.logging.Logger"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="packControl.DatabaseConnection"%>
+<%@page import="utils.DatabaseConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -81,7 +81,7 @@
                                 i += 5;
                             }
                             
-                            if (i>44){
+                            if (i>50){
                                 nombresResultado.add(rs.getString("nombre"));
                                 fotosResultado.add(rs.getString("foto"));
                                 sexosResultado.add(rs.getString("genero"));

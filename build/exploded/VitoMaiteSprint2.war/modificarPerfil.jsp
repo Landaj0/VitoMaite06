@@ -24,6 +24,7 @@
                 <a href="BusquedaLogueado.jsp">Busqueda General</a>
                 <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.jsp">Ver mis Likes</a>
+                <a href="Recomendaciones.jsp">Compatibles</a>
                 <a href="index.jsp">Log out</a>
             </nav>
         </header>

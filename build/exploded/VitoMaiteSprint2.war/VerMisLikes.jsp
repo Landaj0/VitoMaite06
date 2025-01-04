@@ -1,7 +1,7 @@
 <%@page import="java.util.logging.Logger"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="packControl.DatabaseConnection"%>
+<%@page import="Servlet.DatabaseConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -25,6 +25,7 @@
                 <a href="BusquedaLogueado.jsp">Busqueda General</a>
                 <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.jsp">Ver mis Likes</a>
+                <a href="Recomendaciones.jsp">Compatibles</a>
                 <a href="index.jsp">Log out</a>
             </nav>
         </header>

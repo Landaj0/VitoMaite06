@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package packControl;
+package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,12 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import utils.DatabaseConnection;
 
 /**
  *
  * @author USUARIO
  */
-@WebServlet(name = "BusquedaLogueadoServlet", urlPatterns = {"/BusquedaLogueadoServlet"})
+@WebServlet(name = "BusquedaLogueadoServlet", urlPatterns = {"/BusquedaLogueadoServletXXX"})
 public class BusquedaLogueadoServlet extends HttpServlet {
 
     /**

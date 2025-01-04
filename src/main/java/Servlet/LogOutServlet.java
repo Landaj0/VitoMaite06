@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package packControl;
+package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Yeray
  */
-@WebServlet(name = "LogOutServlet", urlPatterns = {"/LogOutServlet"})
+@WebServlet(name = "LogOutServlet", urlPatterns = {"/LogOutServletXXX"})
 public class LogOutServlet extends HttpServlet {
 
     /**
