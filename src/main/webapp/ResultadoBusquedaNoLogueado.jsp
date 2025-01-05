@@ -38,7 +38,7 @@
             <div class="content-resultNoLogueado--hijo" id="hijo">
                 <div class="informacionPersona-container">
                     <div class="informacionPersona-foto">
-                        <img id="hijo-foto" class="fotoPerfil" src="Img/<%= fotos.get(i)%>" alt="foto de perfil">
+                        <img id="hijo-foto" class="fotoPerfilNoLogueado" src="Img/<%= fotos.get(i)%>" alt="foto de perfil">
                     </div>
                     
                     <div class="informacionPersona-datos">
