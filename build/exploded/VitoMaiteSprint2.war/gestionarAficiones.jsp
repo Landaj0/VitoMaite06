@@ -53,10 +53,10 @@
             <%
                 if(aficiones != null && aficiones.get(0).equals("Agregar")){
                     System.out.println("Agregar aficiones");%>
-                    <form action="" method="POST">
+                    <form action="GestionarAficionesAgregarServlet" method="POST">
                     <%
                     for(int i = 1; i<aficiones.size(); i++){%>
-                        <div class="checkbox-container"><input type="checkbox" value="" name="aficionesSeleccionadas"><%= aficiones.get(i) %><br></div>
+                        <div class="checkbox-container"><input type="checkbox" value="<%= aficiones.get(i) %>" name="aficionesSeleccionadas"><%= aficiones.get(i) %><br></div>
                     <%}%>
                     <button type="submit" class="btn boton-aficiones">Agregar</button>
                     </form>
@@ -65,10 +65,10 @@
             <%
                 if(aficiones != null && aficiones.get(0).equals("Eliminar")){
                     System.out.println("Eliminar aficiones");%>
-                    <form action="" method="POST">
+                    <form action="GestionarAficionesEliminarServlet" method="POST">
                     <%
                     for(int i = 1; i<aficiones.size(); i++){%>
-                        <div class="checkbox-container"><input type="checkbox" value="" name="aficionesSeleccionadas"><%= aficiones.get(i) %><br></div>
+                    <div class="checkbox-container"><input type="checkbox" value="<%= aficiones.get(i) %>" name="aficionesSeleccionadas"><%= aficiones.get(i) %><br></div>
                     <%}%>
                     <button type="submit" class="btn boton-aficiones">Eliminar</button>
                     </form>

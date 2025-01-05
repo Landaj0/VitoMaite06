@@ -110,6 +110,32 @@ public class GestionarAficionesEliminarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String[] aficionesSeleccionadas = request.getParameterValues("aficionesSeleccionadas");
+        
+        HttpSession session = request.getSession();
+        String correo = (String)session.getAttribute("correo");
+        
+        Connection connection = DatabaseConnection.getConnection();
+
+        if (connection != null) {
+            try {
+                Statement stmt = connection.createStatement();
+                for(int i = 0; i<aficionesSeleccionadas.length; i++){
+                    String sql = "delete from usuario_aficion where emailUsuario = '" + correo + "' and idAficion = (select idAficion from aficion where aficion = '" + aficionesSeleccionadas[i] + "')";
+                    int x = stmt.executeUpdate(sql);
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error al realizar la consulta a la base de datos.");
+            }
+        } else {
+            System.out.println("No se pudo conectar a la base de datos.");
+        }
+        
+        request.setAttribute("VerAficiones", null);
+        request.getRequestDispatcher("gestionarAficiones.jsp").forward(request, response);
+        
         processRequest(request, response);
     }
 
