@@ -34,57 +34,59 @@
         <div class="content-resultNoLogueado">
             <%
                 ArrayList<String> nombresResultado = new ArrayList<>();
-        ArrayList<String> edadesResultado = new ArrayList<>();
-        ArrayList<String> fotosResultado = new ArrayList<>();
-        ArrayList<String> sexosResultado = new ArrayList<>();
-        ArrayList<String> ciudadesResultado = new ArrayList<>();
-        ArrayList<Boolean> matchesResultado = new ArrayList<>();
-        Connection connection = DatabaseConnection.getConnection();
+                ArrayList<String> correosResultado = new ArrayList<>();
+                ArrayList<String> edadesResultado = new ArrayList<>();
+                ArrayList<String> fotosResultado = new ArrayList<>();
+                ArrayList<String> sexosResultado = new ArrayList<>();
+                ArrayList<String> ciudadesResultado = new ArrayList<>();
+                ArrayList<Boolean> matchesResultado = new ArrayList<>();
+                Connection connection = DatabaseConnection.getConnection();
 
-        if (connection != null) {
+                if (connection != null) {
 
-            String correo = (String) session.getAttribute("correo");
+                    String correo = (String) session.getAttribute("correo");
 
-            try {
-                String sql = "Select * from likes inner join usuario on likes.idUsuarioOrigen = usuario.email where idUsuarioDestino = '" + correo + "'";
+                    try {
+                        String sql = "Select * from likes inner join usuario on likes.idUsuarioOrigen = usuario.email where idUsuarioDestino = '" + correo + "'";
 
-                Statement stmt = connection.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
+                        Statement stmt = connection.createStatement();
+                        ResultSet rs = stmt.executeQuery(sql);
 
-                while (rs.next()) {
+                        while (rs.next()) {
 
-                    System.out.println(rs.getString("idUsuarioDestino"));
-                    nombresResultado.add(rs.getString("nombre"));
-                    edadesResultado.add(rs.getString("edad"));
-                    fotosResultado.add(rs.getString("foto"));
-                    sexosResultado.add(rs.getString("genero"));
-                    ciudadesResultado.add(rs.getString("ciudad"));
+                            System.out.println(rs.getString("idUsuarioDestino"));
+                            nombresResultado.add(rs.getString("nombre"));
+                            edadesResultado.add(rs.getString("edad"));
+                            fotosResultado.add(rs.getString("foto"));
+                            sexosResultado.add(rs.getString("genero"));
+                            ciudadesResultado.add(rs.getString("ciudad"));
+                            correosResultado.add(rs.getString("email"));
 
-                    String sql2 = "Select * from likes where idUsuarioOrigen = '"+correo+"'";
-                    
-                    Statement stmt2 = connection.createStatement();
-                    ResultSet rs2 = stmt2.executeQuery(sql2);
+                            String sql2 = "Select * from likes where idUsuarioOrigen = '" + correo + "'";
 
-                    String correoResultado = rs.getString("idUsuarioOrigen");
-                    Boolean comprobado = false;
-                    while (rs2.next() && !comprobado){
-                        if(correoResultado.equals(rs2.getString("idUsuarioDestino"))){
-                            System.out.println("true");
-                            matchesResultado.add(true);
-                            comprobado = true;
-                        }else{
-                            System.out.println("false");
+                            Statement stmt2 = connection.createStatement();
+                            ResultSet rs2 = stmt2.executeQuery(sql2);
+
+                            String correoResultado = rs.getString("idUsuarioOrigen");
+                            Boolean comprobado = false;
+                            while (rs2.next() && !comprobado) {
+                                if (correoResultado.equals(rs2.getString("idUsuarioDestino"))) {
+                                    System.out.println("true");
+                                    matchesResultado.add(true);
+                                    comprobado = true;
+                                } else {
+                                    System.out.println("false");
+                                }
+                            }
+                            if (!comprobado) {
+                                matchesResultado.add(false);
+                            }
+                            System.out.println(matchesResultado);
                         }
-                    }
-                    if(!comprobado){
-                        matchesResultado.add(false);
-                    }
-                    System.out.println(matchesResultado);
-                }
 
-            } catch (SQLException ex) {
-            }
-        }
+                    } catch (SQLException ex) {
+                    }
+                }
 
                 Boolean match = false;
 
@@ -106,14 +108,15 @@
                             <div id="hijo<%= i + 1%>-sexo"><%= sexosResultado.get(i)%></div>
                             <div id="hijo<%= i + 1%>-edad"><%= edadesResultado.get(i)%></div>
                             <div id="hijo<%= i + 1%>-ciudad"><%= ciudadesResultado.get(i)%></div>
-                            <div id="hijo<%= i + 1%>-ciudad"><%if(match){%><%= "Match: Si"%><%}else {%><%= "Match: No"%><%}%></div>
+                            <div id="hijo<%= i + 1%>-ciudad"><%if (match) {%><%= "Match: Si"%><%} else {%><%= "Match: No"%><%}%></div>
+                            <a href="MasInfo?id=<%= correosResultado.get(i)%>" id=<%= correosResultado.get(i)%>>Ver detalles</a>
                         </div>
                     </div>
-                        
+
                     <div class="fotoMatch">
                         <div class="match-container">
-                            <%if(match){%>
-                                <img class="imagen-match" src="Img/match.webp" alt="foto del match">
+                            <%if (match) {%>
+                            <img class="imagen-match" src="Img/match.webp" alt="foto del match">
                             <%}%>
                         </div>
                     </div>

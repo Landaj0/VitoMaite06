@@ -31,6 +31,7 @@
 
         <div class="content-resultNoLogueado">
             <%
+                ArrayList<String> correosResultado = new ArrayList<>();
                 ArrayList<String> nombresResultado = new ArrayList<>();
                 ArrayList<String> edadesResultado = new ArrayList<>();
                 ArrayList<String> fotosResultado = new ArrayList<>();
@@ -82,6 +83,7 @@
                             }
                             
                             if (i>50){
+                                correosResultado.add(rs.getString("email"));
                                 nombresResultado.add(rs.getString("nombre"));
                                 fotosResultado.add(rs.getString("foto"));
                                 sexosResultado.add(rs.getString("genero"));
@@ -107,6 +109,7 @@
                             <div id="hijo<%= i + 1%>-sexo"><%= sexosResultado.get(i)%></div>
                             <div id="hijo<%= i + 1%>-edad"><%= edadesResultado.get(i)%></div>
                             <div id="hijo<%= i + 1%>-ciudad"><%= ciudadesResultado.get(i)%></div>
+                            <a href="MasInfo?id=<%= correosResultado.get(i) %>" id=<%= correosResultado.get(i) %>>Ver detalles</a>
                         </div>
                     </div>
                 </div>
