@@ -86,8 +86,14 @@ public class BusquedaLogueadoServlet extends HttpServlet {
         String edadMax = request.getParameter("edadMax");
         String ciudad = request.getParameter("ciudad");
         HttpSession session = request.getSession(false);
-            
-        if(sexo != null && edadMin != null && edadMax != null && ciudad != null && Integer.parseInt(edadMin) < Integer.parseInt(edadMax)){
+        
+        int eMin = Integer.parseInt(edadMin);
+        int eMax = Integer.parseInt(edadMax);
+        if(eMin < 18 || eMax > 99 || eMin > eMax){
+            System.out.println("Error");
+            request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response);
+        }   
+        else if(sexo != null && edadMin != null && edadMax != null && ciudad != null && Integer.parseInt(edadMin) < Integer.parseInt(edadMax)){
             
             Connection connection = DatabaseConnection.getConnection();
         
@@ -138,9 +144,6 @@ public class BusquedaLogueadoServlet extends HttpServlet {
             
             request.getRequestDispatcher("ResultadoBusquedaLogueado.jsp").forward(request, response);
         }
-        
-        System.out.println("Error");
-        request.getRequestDispatcher("BusquedaLogueado.jsp").forward(request, response);
     }
 
     /**
