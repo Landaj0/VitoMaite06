@@ -81,6 +81,7 @@ public class ModificarPerfilServlet extends HttpServlet {
 
         String foto = request.getParameter("foto");
         String ciudad = request.getParameter("ciudad");
+        String edad = request.getParameter("edad");
 
         System.out.println(foto);
 
@@ -92,66 +93,56 @@ public class ModificarPerfilServlet extends HttpServlet {
             String correo = (String) sesion.getAttribute("correo");
             String nombre = "";
             String nuevaCiudad = "";
-            String edad = "";
+            String nuevaEdad = "";
             String genero = "";
             String nuevaFoto = "";
 
             try {
                 
-                String sql2 = "";
-                if (foto.length() <= 0 || ciudad.length() <= 0) {
-                    
-                    if (foto.length() <= 0 && ciudad.length() <= 0) {
-                        
-                        //No hay actualizaciones
-                        
-                    } else if (foto.length() <= 0) {
-                        
-                        sql2 = "update usuario set ciudad = '" + ciudad + "' where email = '" + correo + "'";
-                        
-                    } else if (ciudad.length() <= 0) {
-                        
-                        sql2 = "update usuario set foto = '" + foto + "' where email = '" + correo + "'";
-                        
-                    }
-
-                } else {
-                    sql2 = "update usuario set ciudad = '" + ciudad + "', foto = '" + foto + "' where email = '" + correo + "'";
+                if(foto.length() > 0){
+                    String sql1 = "update usuario set foto = '" + foto + "' where email = '" + correo + "'";
+                    Statement stmt1 = connection.createStatement();
+                    int x = stmt1.executeUpdate(sql1);
                 }
                 
-                Statement stmt2 = connection.createStatement();
-                int filas = stmt2.executeUpdate(sql2);
+                if(ciudad.length() > 0){
+                    String sql2 = "update usuario set ciudad = '" + ciudad + "' where email = '" + correo + "'";
+                    Statement stmt2 = connection.createStatement();
+                    int y = stmt2.executeUpdate(sql2);
+                }
                 
-                String sql1 = "Select * from usuario where email = '" + correo + "'";
+                if(edad.length() > 0){
+                    String sql3 = "update usuario set edad = " + edad + " where email = '" + correo + "'";
+                    Statement stmt3 = connection.createStatement();
+                    int z = stmt3.executeUpdate(sql3);
+                }
+                
+                String sql = "Select * from usuario where email = '" + correo + "'";
 
                 Statement stmt = connection.createStatement();
-                ResultSet rs = stmt.executeQuery(sql1);
+                ResultSet rs = stmt.executeQuery(sql);
                 
                 while (rs.next()) {
                     nombre = rs.getString("nombre");
                     nuevaCiudad = rs.getString("ciudad");
-                    edad = rs.getString("edad");
+                    nuevaEdad = rs.getString("edad");
                     genero = rs.getString("genero");
                     nuevaFoto = rs.getString("foto");
                     
                     HttpSession session = request.getSession();
                     session.setAttribute("miCiudad", nuevaCiudad);
                     session.setAttribute("fotoPerfil", nuevaFoto);
+                    session.setAttribute("miEdad", nuevaEdad);
                 }
             } 
             catch (SQLException ex) {
                 ex.printStackTrace();
             }
 
-            System.out.println(nombre);
-            System.out.println(correo);
-            System.out.println(nuevaCiudad);
-            System.out.println(genero);
-
             request.setAttribute("nombre", nombre);
             request.setAttribute("email", correo);
             request.setAttribute("ciudad", nuevaCiudad);
-            request.setAttribute("edad", edad);
+            request.setAttribute("edad", nuevaEdad);
             request.setAttribute("genero", genero);
             request.setAttribute("foto", nuevaFoto);
         } else {

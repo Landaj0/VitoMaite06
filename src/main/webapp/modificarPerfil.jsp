@@ -38,6 +38,10 @@
             </div>
             <img id="preview" src="" alt="Previsualización" style="display:none; width: 150px; height: 150px; border-radius: 50%; margin-top: 10px;">
             <br><br>
+            <label for="ciudad">Edad:</label>
+            <br>
+            <input type="number" min="18" max="99" id="ciudad" name="edad">
+            <br><br>
             <label for="ciudad">Ciudad:</label>
             <br>
             <input type="text" id="ciudad" placeholder="Escribe tu ciudad" name="ciudad">
