@@ -48,7 +48,8 @@
                                 <div id="hijo-nombre"><%= nombres.get(i) %></div>
                                 <div id="hijo-sexo"><%= sexos.get(i).toString() %></div>
                                 <div id="hijo-edad"><%= edades.get(i) %></div>
-                                <div id="hijo-ciudad"><%= ciudades.get(i) %></div>
+                                <div id="hijo-ciudad"><%= ciudades.get(i) %></div
+                                <a href="MasInfo?id=<%= correos.get(i) %>">Ver detalles</a>
                             </div>
                         </div>
                     </div>
