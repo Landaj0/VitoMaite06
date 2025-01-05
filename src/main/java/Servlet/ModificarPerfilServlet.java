@@ -78,67 +78,83 @@ public class ModificarPerfilServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String foto = request.getParameter("foto");
         String ciudad = request.getParameter("ciudad");
-        
+
         System.out.println(foto);
-        
+
         Connection connection = DatabaseConnection.getConnection();
-        
-            if (connection != null){
+
+        if (connection != null) {
+
+            HttpSession sesion = request.getSession(false);
+            String correo = (String) sesion.getAttribute("correo");
+            String nombre = "";
+            String nuevaCiudad = "";
+            String edad = "";
+            String genero = "";
+            String nuevaFoto = "";
+
+            try {
                 
-                HttpSession sesion = request.getSession(false);
-                String correo = (String) sesion.getAttribute("correo");
-                String nombre = "";
-                String nuevaCiudad = "";
-                String edad = "";
-                String genero = "";
-                String nuevaFoto = "";
-                
-                try {
-                    
-                    String sql = "update usuario set ciudad = '" + ciudad + "', foto = '" + foto + "' where email = '" + correo + "'";
-                    
-                    
-                    Statement stmt = connection.createStatement();
-                    int filas = stmt.executeUpdate(sql);
-                    
-                    String sql2 = "Select * from usuario where email = '" + correo + "'";
-                    ResultSet rs = stmt.executeQuery(sql2);
-                    
-                    while(rs.next()){
-                        nombre = rs.getString("nombre");
-                        nuevaCiudad = rs.getString("ciudad");
-                        edad = rs.getString("edad");
-                        genero = rs.getString("genero");
-                        nuevaFoto = rs.getString("foto");
+                String sql2 = "";
+                if (foto.length() <= 0 || ciudad.length() <= 0) {
+                    System.out.println("Alguno es null");
+                    if (foto.length() <= 0 && ciudad.length() <= 0) {
+                        System.out.println("ambos son null");
+                        //No hay actualizaciones
+                    } else if (foto.length() <= 0) {
+                        System.out.println("foto null");
+                        sql2 = "update usuario set ciudad = '" + ciudad + "' where email = '" + correo + "'";
+                    } else if (ciudad.length() <= 0) {
+                        System.out.println("ciudad null");
+                        sql2 = "update usuario set foto = '" + foto + "' where email = '" + correo + "'";
                     }
                     
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
+                    System.out.println("Actualizado la parte correspondiente");
+
+                } else {
+                    sql2 = "update usuario set ciudad = '" + ciudad + "', foto = '" + foto + "' where email = '" + correo + "'";
                 }
                 
+                Statement stmt2 = connection.createStatement();
+                int filas = stmt2.executeUpdate(sql2);
                 
-                System.out.println(nombre);
-                System.out.println(correo);
-                System.out.println(nuevaCiudad);
-                System.out.println(genero);
+                String sql1 = "Select * from usuario where email = '" + correo + "'";
+
+                Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql1);
                 
-                
-                request.setAttribute("nombre", nombre);
-                request.setAttribute("email", correo);
-                request.setAttribute("ciudad", nuevaCiudad);
-                request.setAttribute("edad", edad);
-                request.setAttribute("genero", genero);
-                request.setAttribute("foto", nuevaFoto);
+                while (rs.next()) {
+                    nombre = rs.getString("nombre");
+                    nuevaCiudad = rs.getString("ciudad");
+                    edad = rs.getString("edad");
+                    genero = rs.getString("genero");
+                    nuevaFoto = rs.getString("foto");
+                }
+            } 
+            catch (SQLException ex) {
+                ex.printStackTrace();
             }
-            else {
-                System.out.println("No se pudo conectar a la base de datos.");
-            }   
-            
-            request.getRequestDispatcher("miPerfil.jsp").forward(request, response);
-        
+
+            System.out.println(nombre);
+            System.out.println(correo);
+            System.out.println(nuevaCiudad);
+            System.out.println(genero);
+
+            request.setAttribute("nombre", nombre);
+            request.setAttribute("email", correo);
+            request.setAttribute("ciudad", nuevaCiudad);
+            request.setAttribute("edad", edad);
+            request.setAttribute("genero", genero);
+            request.setAttribute("foto", nuevaFoto);
+        } else {
+            System.out.println("No se pudo conectar a la base de datos.");
+        }
+
+        request.getRequestDispatcher("miPerfil.jsp").forward(request, response);
+
         processRequest(request, response);
     }
 

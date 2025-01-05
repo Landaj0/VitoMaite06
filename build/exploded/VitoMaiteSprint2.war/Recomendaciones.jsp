@@ -21,7 +21,7 @@
                 <p class="logoTexto">VitoMaite</p>
             </a>
             <nav>
-                <a href="miPerfil.jsp">Ver mi perfil</a>
+                <a href="MiPerfilServlet">Ver mi perfil</a>
                 <a href="BusquedaLogueado.jsp">Busqueda General</a>
                 <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.jsp">Ver mis Likes</a>
