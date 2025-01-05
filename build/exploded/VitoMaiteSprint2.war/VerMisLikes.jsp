@@ -113,10 +113,5 @@
             </div>
             <%   }
             %>
-
-
-            <div class="cambioPagina-container">
-                <button class="btn-siguientePagina" id="btn-siguientePagina">Siguiente Pagina</button>
-            </div>
     </body>
 </html>

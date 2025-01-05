@@ -237,31 +237,25 @@ input{
 
 .cambioPagina-container{
     width: 100%;
-    height: 60px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.btn-cambioBusqueda,
-.btn-siguientePagina{
+.btn-cambioBusqueda{
     background: radial-gradient(circle, rgba(255,217,217,1) 35%, rgba(255,241,241,1) 100%);
     border: 2px solid #ff7171;
     border-radius: 15px;
     font-size: 18px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px;
+    margin-bottom: 5px;
 }
 
-.btn-cambioBusqueda:hover,
-.btn-siguientePagina:hover{
+.btn-cambioBusqueda:hover{
     cursor: pointer;
     background: #ff7171;
-}
-
-.btn-cambioBusqueda{
-    margin-right: 100px;
-}
-
-.btn-siguientePagina{
-    margin-left: 100px;
 }
 
 .container-gestionarAficiones {

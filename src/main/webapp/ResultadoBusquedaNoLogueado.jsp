@@ -47,7 +47,7 @@
                             <div id="hijo-sexo"><%= sexos.get(i).toString() %></div>
                             <div id="hijo-edad"><%= edades.get(i) %></div>
                             <div id="hijo-ciudad"><%= ciudades.get(i) %></div>
-                            <a href="MasInfo?id=<%= correos.get(i) %>">Ver detalles</a>
+                            <a href="MasInfo?id=<%= correos.get(i) %>" id=<%= correos.get(i) %>>Ver detalles</a>
                         </div>
                     </div>
                 </div>
@@ -57,9 +57,7 @@
         </div>
         
         <div class="cambioPagina-container">
-            <button class="btn-cambioBusqueda" id="btn-cambioBusqueda">Cambiar Busqueda</button>
-            <button class="btn-siguientePagina" id="btn-siguientePagina">Siguiente Pagina</button>
+            <a href="BusquedaNoLogueado.jsp" class="btn-cambioBusqueda" id="btn-cambioBusqueda">Cambiar Busqueda</a>
         </div>
-        <script src="../js/resultadosBusquedaNoLogueado.js"></script>
     </body>
 </html>

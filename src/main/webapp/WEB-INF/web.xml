@@ -44,6 +44,14 @@
         <servlet-name>GestionarAficionesEliminarServlet</servlet-name>
         <servlet-class>Servlet.GestionarAficionesEliminarServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MasInfo</servlet-name>
+        <servlet-class>Servlet.MasInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MasInfo</servlet-name>
+        <url-pattern>/MasInfo</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GestionarAficionesAgregarServlet</servlet-name>
         <url-pattern>/GestionarAficionesAgregarServlet</url-pattern>

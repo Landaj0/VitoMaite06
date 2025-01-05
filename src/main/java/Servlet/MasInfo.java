@@ -55,13 +55,13 @@ public class MasInfo extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUsuario = request.getParameter("id");
-        if (idUsuario != null) {
-            request.setAttribute("idUsuario", idUsuario);
+        String email = request.getParameter("id");
+        if (email != null) {
+            request.setAttribute("idUsuario", email);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/MasInfo_1.jsp");
             dispatcher.forward(request, response);
         } else {
-            response.sendRedirect("ResultadoBusquedaPorAficiones.jsp?error=ID de usuario no especificado.");
+            response.sendRedirect("ResultadoBusquedaPorAficiones.jsp");
         }
     }
 

@@ -38,6 +38,7 @@
             ArrayList<String> sexos = (ArrayList<String>) request.getAttribute("sexos");
             ArrayList<String> fotos = (ArrayList<String>) request.getAttribute("fotos");
             
+            System.out.println("Correossss: " + correos);
             for(int i=0; i<correos.size(); i++){%>
                 <div class="content-resultNoLogueado--hijo" id="hijo">
                     <div class="informacionPersona-container">
@@ -51,7 +52,7 @@
                                 <div id="hijo-sexo"><%= sexos.get(i).toString() %></div>
                                 <div id="hijo-edad"><%= edades.get(i) %></div>
                                 <div id="hijo-ciudad"><%= ciudades.get(i) %></div>
-                                <a href="MasInfo?id=<%= correos.get(i) %>">Ver detalles</a>
+                                <a href="MasInfo?id=<%= correos.get(i) %>" id=<%= correos.get(i) %>>Ver detalles</a>
                             </div>
                         </div>
                     </div>
@@ -61,9 +62,7 @@
         </div>
         
         <div class="cambioPagina-container">
-            <button class="btn-cambioBusqueda" id="btn-cambioBusqueda">Cambiar Busqueda</button>
-            <button class="btn-siguientePagina" id="btn-siguientePagina">Siguiente Pagina</button>
+            <a href="BusquedaPorAficiones.jsp" class="btn-cambioBusqueda" id="btn-cambioBusqueda">Cambiar Busqueda</a>
         </div>
-        <script src="../js/resultadosBusquedaAficiones.js"></script>
     </body>
 </html>

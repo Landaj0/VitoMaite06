@@ -69,6 +69,7 @@
                 if(idUsuario != null && !idUsuario.trim().isEmpty()){
 
                     try {
+                    
                         st = con.createStatement();
                       
                         String sql="SELECT * FROM usuario WHERE email = '" + idUsuario + "'";
@@ -84,7 +85,7 @@
                             foto = rs.getString("foto");
                                                         
             %>
-                            <p> <img src="imag/<%=foto%>" height="50" width="50"> <br> Nombre: <%=nombre%> <br> Genero: <%=genero%> <br> Edad: <%=edad%> <br> Ciudad: <%=ciudad%> <br>
+                            <p> <img src="Img/<%=foto%>" height="50" width="50"> <br> Nombre: <%=nombre%> <br> Genero: <%=genero%> <br> Edad: <%=edad%> <br> Ciudad: <%=ciudad%> <br>
             
             <%
                         } else {
