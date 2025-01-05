@@ -273,6 +273,8 @@ input{
 }
 
 .button-gestionarAficiones {
+    display: inline-block;
+    text-decoration: none;
     background-color: #007BFF;
     color: white;
     border: none;

@@ -38,17 +38,13 @@
                 <div class="form-container--aficiones">
                     <h4>Eliga las aficiones</h4>
                     <div class="checkbox-container"><input type="checkbox" value="Leer" name="aficiones">Leer<br></div>
+                    <div class="checkbox-container"><input type="checkbox" value="Correr" name="aficiones">Correr<br></div>
+                    <div class="checkbox-container"><input type="checkbox" value="Programar" name="aficiones">Programar<br></div>
                     <div class="checkbox-container"><input type="checkbox" value="Cocinar" name="aficiones">Cocinar<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Pintar" name="aficiones">Pintar<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Deporte" name="aficiones">Deporte<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Jardineria" name="aficiones">Jardineria<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Escribir" name="aficiones">Escribir<br></div>
+                    <div class="checkbox-container"><input type="checkbox" value="Deportes" name="aficiones">Deporte<br></div>
+                    <div class="checkbox-container"><input type="checkbox" value="Fotografia" name="aficiones">Fotografia<br></div>
                     <div class="checkbox-container"><input type="checkbox" value="Viajar" name="aficiones">Viajar<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Ver peliculas" name="aficiones">Ver peliculas<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Bailar" name="aficiones">Bailar<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Pescar" name="aficiones">Pescar<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Escuchar Musica" name="aficiones">Escuchar musica<br></div>
-                    <div class="checkbox-container"><input type="checkbox" value="Tocar un instrumento" name="aficiones">Tocar un instrumento<br></div>
+                    <div class="checkbox-container"><input type="checkbox" value="Musica" name="aficiones">Escuchar musica<br></div>
                 </div>
                 
                 <button id="boton-busquedaAficiones" type="submit" class="btn boton-aficiones">Buscar</button>

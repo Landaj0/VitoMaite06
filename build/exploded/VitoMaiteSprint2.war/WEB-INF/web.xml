@@ -32,6 +32,30 @@
         <servlet-name>ModificarPerfilServlet</servlet-name>
         <servlet-class>Servlet.ModificarPerfilServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GestionarAficionesVerServlet</servlet-name>
+        <servlet-class>Servlet.GestionarAficionesVerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GestionarAficionesAgregarServlet</servlet-name>
+        <servlet-class>Servlet.GestionarAficionesAgregarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GestionarAficionesEliminarServlet</servlet-name>
+        <servlet-class>Servlet.GestionarAficionesEliminarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GestionarAficionesAgregarServlet</servlet-name>
+        <url-pattern>/GestionarAficionesAgregarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarAficionesEliminarServlet</servlet-name>
+        <url-pattern>/GestionarAficionesEliminarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarAficionesVerServlet</servlet-name>
+        <url-pattern>/GestionarAficionesVerServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ModificarPerfilServlet</servlet-name>
         <url-pattern>/ModificarPerfilServlet</url-pattern>
