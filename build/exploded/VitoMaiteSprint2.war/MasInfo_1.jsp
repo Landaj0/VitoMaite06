@@ -168,8 +168,8 @@
                 }
             %>
             <div class="cambioPagina-container">
-                <a href="index.jsp" class="btm-cambioBusqueda">Volver</a>
-                <a href="DarLikeServlet?id=<%= idUsuario %>" class="btn-cambioBusqueda" id="btn-cambioBusqueda"><% 
+                <a href="BusquedaLogueado.jsp" class="btn-cambioBusqueda marginDerecho">Volver</a>
+                <a href="DarLikeServlet?id=<%= idUsuario %>" class="btn-cambioBusqueda marginIzquierdo" id="btn-cambioBusqueda"><% 
                     String query = "select idUsuarioDestino from likes where idUsuarioOrigen = '" + session.getAttribute("correo") + "'";
                     
                     System.out.println(session.getAttribute("correo"));

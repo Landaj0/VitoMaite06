@@ -346,3 +346,11 @@ input{
     height: 100%;
     width: 100%;
 }
+
+.marginIzquierdo{
+    margin-left: 30px;
+}
+
+.marginDerecho{
+    margin-right: 30px;
+}
