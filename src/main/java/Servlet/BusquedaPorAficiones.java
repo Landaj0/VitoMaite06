@@ -119,7 +119,7 @@ public class BusquedaPorAficiones extends HttpServlet {
                 ArrayList<String> fotosUsuarios = new ArrayList<>();
                 
                 for(int id : idAficiones){
-                    String sql2 = "select distinct(emailUsuario) from usuario_aficion where idAficionUsuario = " + id +" and emailUsuario != '" + session.getAttribute("correo") + "'";
+                    String sql2 = "select distinct(emailUsuario) from usuario_aficion where idAficion = " + id +" and emailUsuario != '" + session.getAttribute("correo") + "'";
                     
                     try {
                     

@@ -24,11 +24,11 @@
             <span id="saludoUsuario" class="saludo"><%= session.getAttribute("saludo") %></span>
             <img id="imagen-perfil" src="Img/<%= session.getAttribute("fotoPerfil") %>" alt="foto de perfil">
             <nav>
-                <a href="MiPerfilServlet">Ver mi perfil</a>
-                <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
-                <a href="VerMisLikes.jsp">Ver mis Likes</a>
-                <a href="BusquedaPorLocalizacion.jsp">Por Localización</a>
-                <a href="LogOutServlet">Log out</a>
+                <a href="miPerfil.html">Ver mi perfil</a>
+                <a href="BusquedaPorAficiones.html">Busqueda por Aficiones</a>
+                <a href="VerMisLikes.html">Ver mis Likes</a>
+                <a href="BusquedaPorLocalizacion.html">Por Localización</a>
+                <a href="index.html">Log out</a>
             </nav>
         </header>
     
