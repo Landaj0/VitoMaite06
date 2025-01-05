@@ -36,7 +36,6 @@
                 <a href="Recomendaciones.jsp">Compatibles</a>
                 <a href="index.jsp">Log out</a>
             </nav>
-            </h1><p>
                 <%!
                 private Connection con;
                 private Statement st, st2;
@@ -62,7 +61,7 @@
         <%
             }
         %>
-        <main>
+        <main class="content">
             <div class="busquedaLocalizacion">
                     <div id="map"></div> <br>
 
@@ -141,8 +140,8 @@
             <%
                 }
             %>
-            <button onclick="history.back()">Volver</button>
-            </div>
             
+            </div>
+        </main>    
     </body>
 </html>
