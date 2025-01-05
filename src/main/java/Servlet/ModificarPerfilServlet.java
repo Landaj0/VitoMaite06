@@ -100,19 +100,20 @@ public class ModificarPerfilServlet extends HttpServlet {
                 
                 String sql2 = "";
                 if (foto.length() <= 0 || ciudad.length() <= 0) {
-                    System.out.println("Alguno es null");
-                    if (foto.length() <= 0 && ciudad.length() <= 0) {
-                        System.out.println("ambos son null");
-                        //No hay actualizaciones
-                    } else if (foto.length() <= 0) {
-                        System.out.println("foto null");
-                        sql2 = "update usuario set ciudad = '" + ciudad + "' where email = '" + correo + "'";
-                    } else if (ciudad.length() <= 0) {
-                        System.out.println("ciudad null");
-                        sql2 = "update usuario set foto = '" + foto + "' where email = '" + correo + "'";
-                    }
                     
-                    System.out.println("Actualizado la parte correspondiente");
+                    if (foto.length() <= 0 && ciudad.length() <= 0) {
+                        
+                        //No hay actualizaciones
+                        
+                    } else if (foto.length() <= 0) {
+                        
+                        sql2 = "update usuario set ciudad = '" + ciudad + "' where email = '" + correo + "'";
+                        
+                    } else if (ciudad.length() <= 0) {
+                        
+                        sql2 = "update usuario set foto = '" + foto + "' where email = '" + correo + "'";
+                        
+                    }
 
                 } else {
                     sql2 = "update usuario set ciudad = '" + ciudad + "', foto = '" + foto + "' where email = '" + correo + "'";
@@ -132,6 +133,10 @@ public class ModificarPerfilServlet extends HttpServlet {
                     edad = rs.getString("edad");
                     genero = rs.getString("genero");
                     nuevaFoto = rs.getString("foto");
+                    
+                    HttpSession session = request.getSession();
+                    session.setAttribute("miCiudad", nuevaCiudad);
+                    session.setAttribute("fotoPerfil", nuevaFoto);
                 }
             } 
             catch (SQLException ex) {
