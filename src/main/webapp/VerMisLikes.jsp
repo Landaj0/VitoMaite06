@@ -46,7 +46,7 @@
             String correo = (String) session.getAttribute("correo");
 
             try {
-                String sql = "Select * from likes inner join usuario on likes.idUsuarioDestino=usuario.email where idUsuarioOrigen = '" + correo + "'";
+                String sql = "Select * from likes inner join usuario on likes.idUsuarioOrigen = usuario.email where idUsuarioDestino = '" + correo + "'";
 
                 Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
@@ -60,15 +60,15 @@
                     sexosResultado.add(rs.getString("genero"));
                     ciudadesResultado.add(rs.getString("ciudad"));
 
-                    String sql2 = "Select * from likes where idUsuarioDestino = '"+correo+"'";
+                    String sql2 = "Select * from likes where idUsuarioOrigen = '"+correo+"'";
                     
                     Statement stmt2 = connection.createStatement();
                     ResultSet rs2 = stmt2.executeQuery(sql2);
 
-                    String correoResultado = rs.getNString("idUsuarioDestino");
+                    String correoResultado = rs.getString("idUsuarioOrigen");
                     Boolean comprobado = false;
                     while (rs2.next() && !comprobado){
-                        if(correoResultado.equals(rs2.getString("idUsuarioOrigen"))){
+                        if(correoResultado.equals(rs2.getString("idUsuarioDestino"))){
                             System.out.println("true");
                             matchesResultado.add(true);
                             comprobado = true;
@@ -107,6 +107,14 @@
                             <div id="hijo<%= i + 1%>-edad"><%= edadesResultado.get(i)%></div>
                             <div id="hijo<%= i + 1%>-ciudad"><%= ciudadesResultado.get(i)%></div>
                             <div id="hijo<%= i + 1%>-ciudad"><%if(match){%><%= "Match: Si"%><%}else {%><%= "Match: No"%><%}%></div>
+                        </div>
+                    </div>
+                        
+                    <div class="fotoMatch">
+                        <div class="match-container">
+                            <%if(match){%>
+                                <img class="imagen-match" src="Img/match.webp" alt="foto del match">
+                            <%}%>
                         </div>
                     </div>
                 </div>

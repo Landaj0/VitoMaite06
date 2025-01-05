@@ -25,7 +25,7 @@
                 <a href="MiPerfilServlet">Ver mi perfil</a>
                 <a href="BusquedaPorAficiones.jsp">Busqueda por Aficiones</a>
                 <a href="VerMisLikes.jsp">Ver mis Likes</a>
-                <a href="BusquedaPorLocalizacion.jsp">Por Localización</a>
+                <a href="BuscarPorLocalizacion.jsp">Por Localización</a>
                 <a href="Recomendaciones.jsp">Compatibles</a>
                 <a href="LogOutServlet">Log out</a>
             </nav>

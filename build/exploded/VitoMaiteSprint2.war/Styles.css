@@ -339,4 +339,10 @@ input{
 #map {
     height: 400px;
     width: 700px;
+    margin-left: 30px; 
+}
+
+.imagen-match{
+    height: 100%;
+    width: 100%;
 }

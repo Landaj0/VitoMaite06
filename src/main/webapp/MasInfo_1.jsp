@@ -39,8 +39,8 @@
             </h1><p>
                 <%!
                 private Connection con;
-                private Statement st, st2;
-                private ResultSet rs, rs2, rs3;
+                private Statement st, st2, st3;
+                private ResultSet rs, rs2, rs3, rs4;
                 private String nombre, genero, ciudad, foto;
                 private int edad;
                 private double latitud,longitud;
@@ -167,7 +167,31 @@
             <%
                 }
             %>
-            <button onclick="history.back()">Volver</button>
+            <div class="cambioPagina-container">
+                <a href="index.jsp" class="btm-cambioBusqueda">Volver</a>
+                <a href="DarLikeServlet?id=<%= idUsuario %>" class="btn-cambioBusqueda" id="btn-cambioBusqueda"><% 
+                    String query = "select idUsuarioDestino from likes where idUsuarioOrigen = '" + session.getAttribute("correo") + "'";
+                    
+                    System.out.println(session.getAttribute("correo"));
+                    
+                    st3 = con.createStatement();
+                    rs4 = st3.executeQuery(query);
+                    
+                    boolean encontrado = false;
+                    while(rs4.next()){
+                        if(rs4.getString("idUsuarioDestino").equals(idUsuario)){
+                            encontrado = true;
+                        }
+                    }
+                    
+                    if(encontrado){%>
+                    Quitar Like
+                    <%}
+                    else{%>
+                    Dar Like
+                    <%}
+                    %></a>
+            </div>
             </div>
             
     </body>
