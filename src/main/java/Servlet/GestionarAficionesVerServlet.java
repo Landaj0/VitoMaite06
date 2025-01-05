@@ -72,7 +72,7 @@ public class GestionarAficionesVerServlet extends HttpServlet {
         
 
         if (connection != null) {
-            String sql = "select aficion from usuario_aficion natural join aficion where emailUsuario = '" + correo + "'";
+            String sql = "select aficion from usuario_aficion inner join aficion on idAficion = idAficionUsuario where emailUsuario = '" + correo + "'";
             
             try{
                 Statement stmt = connection.createStatement();

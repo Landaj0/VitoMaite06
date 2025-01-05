@@ -71,7 +71,7 @@ public class GestionarAficionesEliminarServlet extends HttpServlet {
         
 
         if (connection != null) {
-            String sql = "select aficion from usuario_aficion natural join aficion where emailUsuario = '" + correo + "'";
+            String sql = "select aficion from usuario_aficion inner join aficion on idAficionUsuario = idAficion where emailUsuario = '" + correo + "'";
             
             try{
                 Statement stmt = connection.createStatement();
@@ -121,7 +121,7 @@ public class GestionarAficionesEliminarServlet extends HttpServlet {
             try {
                 Statement stmt = connection.createStatement();
                 for(int i = 0; i<aficionesSeleccionadas.length; i++){
-                    String sql = "delete from usuario_aficion where emailUsuario = '" + correo + "' and idAficion = (select idAficion from aficion where aficion = '" + aficionesSeleccionadas[i] + "')";
+                    String sql = "delete from usuario_aficion where emailUsuario = '" + correo + "' and idAficionUsuario = (select idAficion from aficion where aficion = '" + aficionesSeleccionadas[i] + "')";
                     int x = stmt.executeUpdate(sql);
                 }
                 

@@ -70,7 +70,7 @@ public class GestionarAficionesAgregarServlet extends HttpServlet {
         Connection connection = DatabaseConnection.getConnection();
 
         if (connection != null) {
-            String sql = "select aficion from aficion where aficion not in (select aficion from usuario_aficion natural join aficion where emailUsuario = '" + correo + "')";
+            String sql = "select aficion from aficion where aficion not in (select aficion from usuario_aficion inner join aficion on usuario_aficion.idAficionUsuario = aficion.idAficion where emailUsuario = '" + correo + "')";
             
             try{
                 Statement stmt = connection.createStatement();
